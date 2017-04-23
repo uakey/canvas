@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			list-style: none;
+		}
+		canvas{
+			border:1px solid #b6b6b6;
+			margin:20px;
+
+
+/*        宽高不能写在此处 会与内部参数按比例缩小放大
+			width:400px;
+			height:400px;
+*/		
+		}
+		input{
+			width:70px;
+			height:30px;
+			margin-top:10px;
+			margin-left:20px; 
+			text-align: center;
+			border:none;
+			background:#b6b6b6;
+		}
+
+		.active{
+			background:red;
+		}
+	</style>
+</head>
+<body>
+	<input class="active" type="text" value="画笔">
+	<input type="text" value="橡皮擦">
+	<br/>
+	<canvas id="cs" width="400" height="600">对老板IE不支持</canvas>
+
+
+	<script>
+		var cl=document.getElementById("cs");
+		var oInput=document.getElementsByTagName("input");
+		var ctx=cl.getContext("2d");
+		var num=0;
+		for(var i=0;i<oInput.length;i++){
+			oInput[i].index=i;
+			oInput[i].onclick=function(){
+				for(var j=0;j<oInput.length;j++){
+					oInput[j].className="";
+				}
+				this.className="active";
+				num=this.index;
+
+			}
+		}
+        
+        cl.onmousedown=function(ev){
+            var x=ev.pageX-cl.offsetLeft;
+            var y=ev.pageY-cl.offsetTop;
+            ctx.beginPath();
+            ctx.moveTo(x,y);
+
+            cl.onmousemove=function(ev){
+	
+
+				var x=ev.pageX-cl.offsetLeft;
+	            var y=ev.pageY-cl.offsetTop;
+             if(num==0){
+	            ctx.lineTo(x,y);
+	            ctx.stroke();
+
+             }else if(num==1){
+             	ctx.clearRect(x,y,20,20);
+             } 
+
+            }
+
+            document.onmouseup=function(){
+            	cl.onmousemove=null;
+	        	cl.onmouseup=null;
+                ctx.closePath(); 
+            	return false;
+            }
+
+
+
+        };
+
+ 
+
+	</script>
+</body>
+</html>
