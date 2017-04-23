@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			list-style: none;
+		}
+		canvas{
+			border:1px solid #b6b6b6;
+			margin:50px;
+
+
+/*        宽高不能写在此处 会与内部参数按比例缩小放大
+			width:400px;
+			height:400px;
+*/		
+		}
+	</style>
+</head>
+<body>
+	
+	<canvas id="cs" width="400" height="600">对老板IE不支持</canvas>
+
+
+	<script>
+		var cl=document.getElementById("cs");
+		var ctx=cl.getContext("2d");
+
+		//ctx.fillRect(30,30,100,100)     // 参数：x y w h 默认颜色:黑色
+
+		ctx.strokeRect(50,100,100,100); // 默认：黑色 1px
+
+	</script>
+</body>
+</html>
