@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			list-style: none;
+		}
+		canvas{
+			border:1px solid #b6b6b6;
+			margin:20px;
+
+
+/*        宽高不能写在此处 会与内部参数按比例缩小放大
+			width:400px;
+			height:400px;
+*/		
+		}
+
+	</style>
+</head>
+<body>
+		<canvas id="cl" width="600" height="600">您的浏览器版本太低，请升级高版本浏览器！</canvas>
+	<script>
+		var cl=document.getElementById("cl");
+		var ctx=cl.getContext("2d");
+         
+        function draw(){
+          
+          var x=300;
+          var y=300;
+          var r=200;
+
+          var date=new Date();
+          var iH=date.getHours();
+          var iM=date.getMinutes();
+          var iS=date.getSeconds();
+
+          var iHVal=(iH*30-90+iM/2)*Math.PI/180;
+          var iMVal=(iM*6-90+iS/10)*Math.PI/180;
+          var iSVal=(iS*6-90)*Math.PI/180;
+          ctx.save();
+          ctx.clearRect(0,0,cl.width,cl.height);
+          for(var i=0;i<60;i++){
+	          ctx.beginPath();
+	          ctx.moveTo(x,y);
+	          ctx.arc(x,y,r,i*6*Math.PI/180,(i+1)*6*Math.PI/180);
+	          ctx.closePath();
+	          ctx.stroke();
+          }
+          
+          ctx.beginPath()
+          ctx.fillStyle="white";
+          ctx.arc(x,y,r*0.95,0,360*Math.PI/180);
+          ctx.closePath();
+          ctx.fill();
+
+          for(var i=0;i<60;i++){
+          	ctx.beginPath();
+          	ctx.lineWidth="2";
+	          ctx.moveTo(x,y);
+	          ctx.arc(x,y,r,i*30*Math.PI/180,(i+1)*30*Math.PI/180);
+	          ctx.closePath();
+	          ctx.stroke();
+          }
+
+          ctx.beginPath()
+          ctx.fillStyle="white";
+          ctx.arc(x,y,r*0.9,0,360*Math.PI/180);
+          ctx.closePath();
+          ctx.fill();
+
+	      ctx.beginPath();
+	      ctx.moveTo(x,y);
+          ctx.arc(x,y,r*0.85,iSVal,iSVal);
+          ctx.closePath();
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.lineWidth="4";
+	      ctx.moveTo(x,y);
+          ctx.arc(x,y,r*0.70,iMVal,iMVal);
+          ctx.closePath();
+          ctx.stroke();
+
+          ctx.beginPath()
+          ctx.lineWidth="6";
+	      ctx.moveTo(x,y);
+          ctx.arc(x,y,r*0.50,iHVal,iHVal);
+          ctx.closePath();
+          ctx.stroke();
+
+	      ctx.beginPath()
+	      ctx.fillStyle="blue"
+          ctx.arc(x,y,r*0.026,0,360*Math.PI/180);
+          ctx.closePath();
+          ctx.fill();
+
+
+          ctx.restore(); 
+
+
+
+
+        } 
+
+        draw();
+        setInterval(draw,1000);
+
+
+
+
+
+
+
+        
+	</script>
+</body>
+</html>

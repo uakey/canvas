@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			list-style: none;
+		}
+
+		canvas{
+			border:1px solid #b6b6b6;
+			margin:20px;
+		}
+
+	</style>
+</head>
+<body>
+	<canvas id="cl" width="400" height="600"></canvas>
+	<script>
+		var cl=document.getElementById("cl");
+		var ctx=cl.getContext("2d");
+        
+        // ctx.arc(200,200,100,0,360*Math.PI/180); 
+        // ctx.stroke();
+        
+        // ctx.arc(200,200,100,0,180*Math.PI/180);
+        // ctx.stroke();
+        
+
+	    // ctx.arc(200,200,100,0,180*Math.PI/180);
+	    // ctx.closePath();
+	    // ctx.stroke();
+	    
+	    // ctx.arc(200,200,100,0,90*Math.PI/180);
+	    // ctx.closePath();
+	    // ctx.stroke();
+	     
+	     
+	    // ctx.arc(200,200,100,0,90*Math.PI/180,true); // true 逆时针  false 顺时针
+	    // ctx.closePath();
+	    // ctx.stroke();
+	    
+	    // ctx.moveTo(100,200);  // 画斜线
+        // ctx.arcTo(100,100,500,100,50);
+        // ctx.stroke();
+
+
+
+	      ctx.moveTo(200,200);
+	      ctx.arc(200,200,100,0,90*Math.PI/180);
+	      ctx.lineTo(200,200)
+	     // ctx.closePath();
+	      ctx.stroke();
+ 
+	    
+	
+
+	</script>
+		
+</body>
+</html>
