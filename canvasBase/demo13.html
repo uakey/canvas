@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>渐变</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+
+        canvas{
+            border:1px solid #b6b6b6;
+            margin:50px;
+
+
+        }
+    </style>
+
+</head>
+<body>
+<canvas id="cs" width="400" height="500">对老板IE不支持</canvas>
+<script>
+    var cl=document.getElementById("cs");
+    var ctx=cl.getContext("2d");
+    // 线性渐变
+    var bg=ctx.createLinearGradient(100,100,100,300); // 前两个为起点坐标  后两个为终点坐标
+    bg.addColorStop(0,"blue");  // 前一个参数为比例值
+    bg.addColorStop(0.5,"red");
+    bg.addColorStop(1,"yellow");
+    ctx.fillStyle=bg;
+    ctx.fillRect(100,100,200,200);
+</script>
+</body>
+</html>
